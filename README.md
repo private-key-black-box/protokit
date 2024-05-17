@@ -1,53 +1,25 @@
-# Protokit starter-kit
+<div align="center">
+  <h1 align="center">Black Box Private Key </h1>
+  <h3>Proofable and verifiable blackboxed private keys</h3>
+  
+![logo](logo.png)
+</div>
 
-This repository is a monorepo aimed at kickstarting application chain development using the Protokit framework.
+🎮 Lorem ipsum 
 
-## Quick start
+⚙️ Built on Mina, Protokit, Rust, Typescript and React.
 
-The monorepo contains 1 package and 1 app:
+## Diagram
 
-- `packages/chain` contains everything related to your app-chain
-- `apps/web` contains a demo UI that connects to your locally hosted app-chain sequencer
+## Screenshots
 
-**Prerequisites:**
+## Bounties
 
-- Node.js v18
-- pnpm
-- nvm
+## Links
 
-> If you're on windows, please use Docker until we find a more suitable solution to running the `@proto-kit/cli`. 
-> Run the following command and then proceed to "Running the sequencer & UI":
->
-> `docker run -it --rm -p 3000:3000 -p 8080:8080 -v %cd%:/starter-kit -w /starter-kit gplane/pnpm:node18 bash`
-
-
-### Setup
-
-```zsh
-git clone https://github.com/proto-kit/starter-kit my-chain
-cd my-chain
-
-# ensures you have the right node.js version
-nvm use
-pnpm install
-```
-
-### Running the sequencer & UI
-
-```zsh
-# starts both UI and sequencer locally
-pnpm dev
-
-# starts UI only
-pnpm dev -- --filter web
-# starts sequencer only
-pnpm dev -- --filter chain
-```
-
-### Running tests
-```zsh
-# run and watch tests for the `chain` package
-pnpm run test --filter=chain -- --watchAll
-```
-
-Navigate to `localhost:3000` to see the example UI, or to `localhost:8080/graphql` to see the GQL interface of the locally running sequencer.
+## Team
+This project is build for ZK Hack Krakow 2024 by:
+- [Scott]()
+- [Cleaner]()
+- [Thomas]()
+- [arjanjohan](https://twitter.com/arjanjohan)
