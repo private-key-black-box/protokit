@@ -13,7 +13,7 @@ import { useChainStore, usePollBlockHeight } from "@/lib/stores/chain";
 import { tokens } from "@/tokens";
 import { useClientStore } from "@/lib/stores/client";
 import { FaucetForm } from "@/components/faucet/faucet-form";
-import { AddLiquidityForm } from "./xyk/add-liquidity-form";
+// import { AddLiquidityForm } from "./xyk/add-liquidity-form";
 import { RemoveLiquidityForm } from "./xyk/remove-liquidity-form";
 import { SwapForm } from "./xyk/swap-form";
 import { TransferForm } from "./wallet/transfer-form";
@@ -58,7 +58,7 @@ export default function Home() {
 <HomeComponent
   swapForm={<SwapForm loading={true} route={['yourRouteValue']} />}
   transferForm={<TransferForm />}
-  addLiquidityForm={<AddLiquidityForm />}
+  addLiquidityForm={<div key="placeholder" />}
   removeLiquidityForm={<RemoveLiquidityForm loading={true} poolExists={true} onChangeTokens={() => {}} />}
   wallet={
           <Wallet

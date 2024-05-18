@@ -36,7 +36,7 @@ export interface HomeProps {
 export function Home({
   swapForm,
   wallet,
-  addLiquidityForm,
+//   addLiquidityForm,
   removeLiquidityForm,
   transferForm,
 }: HomeProps) {
@@ -132,7 +132,7 @@ export function Home({
 
               <TabsContent value="swap">{swapForm}</TabsContent>
 
-              <TabsContent value="pools-add">{addLiquidityForm}</TabsContent>
+              {/* <TabsContent value="pools-add">{addLiquidityForm}</TabsContent> */}
               <TabsContent value="pools-remove">
                 {removeLiquidityForm}
               </TabsContent>
