@@ -3,14 +3,35 @@ import {
   RuntimeModule,
   runtimeModule,
 } from "@proto-kit/module";
+import { inject } from "tsyringe";
+
 import {
   CircuitString,
   Encryption,
   Experimental,
   Field,
+  PublicKey,
   PrivateKey,
   Provable,
+  Struct,
 } from "o1js";
+import { MAX_TOKEN_ID, TokenRegistry } from "./token-registry";
+import { Balances } from "./balances";
+import { UInt64 } from "@proto-kit/library";
+
+
+
+export class TokenId extends Field {}
+export class BalancesKey extends Struct({
+  tokenId: TokenId,
+  address: PublicKey,
+}) {
+  public static from(tokenId: TokenId, address: PublicKey) {
+    return new BalancesKey({ tokenId, address });
+  }
+}
+
+export class Balance extends UInt64 {}
 
 const generate = (seed: CircuitString) => {
   // Transform seed to private key and pad it to 255 fields
@@ -75,11 +96,33 @@ const proof = new NoSignerProof({
 export class NoSigning extends RuntimeModule<Record<string, never>> {
   // @state() public circulatingSupply = State.from<Balance>(Balance);
 
+  public constructor(
+    @inject("Balances") public balances: Balances,
+    @inject("TokenRegistry") public tokenRegistry: TokenRegistry
+  ) {
+    super();
+  }
+
+
   @runtimeMethod()
   public generate(
     seed: CircuitString,
   ): Field[] {
     return generate(seed);
+  }
+
+
+  @runtimeMethod()
+  public transferWithProof(
+    tokenId: TokenId,
+    from: PublicKey,
+    to: PublicKey,
+    amount: Balance,
+    proof: NoSignerProof,
+  ) {
+    proof.verify();
+
+    this.balances.transfer(tokenId, from, to, amount);
   }
   
   // @runtimeMethod()
