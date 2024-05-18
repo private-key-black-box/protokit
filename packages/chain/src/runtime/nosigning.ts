@@ -2,10 +2,7 @@ import {
   runtimeMethod,
   RuntimeModule,
   runtimeModule,
-  state,
 } from "@proto-kit/module";
-import { assert, State } from "@proto-kit/protocol";
-import { Balance, Balances as BaseBalances, TokenId } from "@proto-kit/library";
 import {
   CircuitString,
   Encryption,
@@ -13,11 +10,7 @@ import {
   Field,
   PrivateKey,
   Provable,
-  PublicKey,
-  verify,
 } from "o1js";
-import { dummyBase64Proof } from "o1js/dist/node/lib/proof_system";
-import { Pickles } from "o1js/dist/node/snarky";
 
 const generate = (seed: CircuitString) => {
   // Transform seed to private key and pad it to 255 fields
@@ -67,16 +60,16 @@ let { verificationKey } = await MyProgram.compile();
 // console.log("ok?", ok);
 
 // generate a dummy proof, to be used when testing the runtime method
-const [, dummy] = Pickles.proofOfBase64(await dummyBase64Proof(), 2);
+// const [, dummy] = Pickles.proofOfBase64(Pickles.dummyBase64Proof(), 2);
 const publicInput = undefined;
 const proof = new NoSignerProof({
-  proof: dummy,
+  proof: "dummy",
   publicInput,
   publicOutput: generate(CircuitString.fromString("test")),
   maxProofsVerified: 2,
 });
 
-console.log(`proof: ${JSON.stringify(proof, null, 2)}`);
+// console.log(`proof: ${JSON.stringify(proof, null, 2)}`);
 
 @runtimeModule()
 export class NoSigning extends RuntimeModule<Record<string, never>> {
@@ -88,6 +81,14 @@ export class NoSigning extends RuntimeModule<Record<string, never>> {
   ): Field[] {
     return generate(seed);
   }
+  
+  // @runtimeMethod()
+  // public signTransaction(
+  //   proof: Proof,
+  // ): Field[] {
+  //   return signTransaction(proof);
+  // }
+
 
   // @runtimeMethod()
   // public verify(proof: NoSignerProof) {
