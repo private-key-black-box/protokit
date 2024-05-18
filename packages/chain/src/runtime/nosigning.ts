@@ -63,7 +63,7 @@ const MyProgram = Experimental.ZkProgram({
   },
 });
 
-class NoSignerProof extends Experimental.ZkProgram.Proof(MyProgram) { }
+export class NoSignerProof extends Experimental.ZkProgram.Proof(MyProgram) { }
 // let NoSignerProof = ZkProgram.Proof(MyProgram);
 
 // console.log(`program digest: ${MyProgram.digest()}`);
@@ -89,6 +89,7 @@ const proof = new NoSignerProof({
   publicOutput: generate(CircuitString.fromString("test")),
   maxProofsVerified: 2,
 });
+
 
 // console.log(`proof: ${JSON.stringify(proof, null, 2)}`);
 
