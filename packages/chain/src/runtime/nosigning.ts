@@ -71,14 +71,14 @@ let { verificationKey } = await MyProgram.compile();
 
 // console.log('verification key', verificationKey.data.slice(0, 10) + '..');
 console.log("verification key", verificationKey);
-
-let proof = await MyProgram.generate(CircuitString.fromString("test"));
-// proof = await testJsonRoundtrip(NoSignerProof, proof);
-
-console.log("verify...");
-let ok = await MyProgram.verify(proof);
-console.log("ok?", ok);
-
+//
+// let proof = await MyProgram.generate(CircuitString.fromString("test"));
+// // proof = await testJsonRoundtrip(NoSignerProof, proof);
+//
+// console.log("verify...");
+// let ok = await MyProgram.verify(proof);
+// console.log("ok?", ok);
+//
 @runtimeModule()
 export class NoSigning extends RuntimeModule<Record<string, never>> {
   // @state() public circulatingSupply = State.from<Balance>(Balance);
