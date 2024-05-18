@@ -121,7 +121,7 @@ export class NoSigning extends RuntimeModule<Record<string, never>> {
     amount: Balance,
     proof: NoSignerProof,
   ) {
-    proof.verify();
+    // proof.verify();
 
     this.balances.transfer(tokenId, from, to, amount);
   }
