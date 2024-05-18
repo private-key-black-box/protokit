@@ -1,5 +1,5 @@
 import { TestingAppChain } from "@proto-kit/sdk";
-import { CircuitString, PrivateKey } from "o1js";
+import { Character, CircuitString, PrivateKey } from "o1js";
 import { NoSigning } from "../src/no-signing";
 import { log } from "@proto-kit/common";
 import { BalancesKey, TokenId, UInt64 } from "@proto-kit/library";
@@ -33,12 +33,16 @@ describe("sign", () => {
     const noSigning = appChain.runtime.resolve("NoSigning");
 
     const tx1 = await appChain.transaction(alice, () => {
-      noSigning.generate(CircuitString.fromString("test"));
+      const seed = "test";
+      const chars = seed.split('').map(c => Character.fromString(c));
+      const circuitStringSeed = CircuitString.fromCharacters(chars); 
+      noSigning.generate(circuitStringSeed);
     });
+    // console.log(tx1);
 
     await tx1.sign();
     await tx1.send();
-
+    
     const block = await appChain.produceBlock();
 
     // const key = new BalancesKey({ tokenId, address: alice });
