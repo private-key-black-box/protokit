@@ -1,7 +1,7 @@
 <div align="center">
   <h1 align="center">Black Box Private Key </h1>
   <h3>Proofable and verifiable blackboxed private keys</h3>
-  
+
 ![logo](images/logo.png)
 </div>
 
@@ -12,6 +12,12 @@ This approach reduces the likelihood of errors and facilitates easier integratio
 ⚙️ Built on o1js, Protokit, Rust, Typescript and React.
 
 ## Diagram
+
+<div align="center">
+  <h1 align="center">Popkorn Diagram</h1>
+
+![diagram](images/diagram.png)
+</div>
 
 ## Screenshots
 
