@@ -1,7 +1,11 @@
+import 'reflect-metadata';
+
 import { TestingAppChain } from "@proto-kit/sdk";
 import { Character, CircuitString, PrivateKey } from "o1js";
 import { NoSigning } from "../../src/runtime/nosigning";
+import { TokenRegistry } from "../../src/runtime/token-registry";
 import { log } from "@proto-kit/common";
+import { config, modules } from "../../src/runtime";
 import { BalancesKey, TokenId, UInt64 } from "@proto-kit/library";
 
 log.setLevel("ERROR");
@@ -10,16 +14,11 @@ describe("sign", () => {
   it("should demonstrate how our new module works", async () => {
     const appChain = TestingAppChain.fromRuntime({
       NoSigning,
+      TokenRegistry
     });
 
     appChain.configurePartial({
-      Runtime: {
-        Balances: {
-          totalSupply: UInt64.from(10000),
-        },
-        NoSigning: {
-        },
-      },
+      Runtime: config,
     });
 
     await appChain.start();
