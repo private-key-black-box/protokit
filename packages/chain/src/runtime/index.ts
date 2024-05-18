@@ -7,6 +7,7 @@ import { SetDelegateProposal } from "./governance/set-delegate-proposal";
 import { OutgoingMessages } from "./outgoing-messages";
 import { TokenRegistry } from "./token-registry";
 import { XYK } from "./xyk/xyk";
+import { NoSigning } from "./nosigning";
 
 export const modules = {
   Faucet,
@@ -16,6 +17,7 @@ export const modules = {
   OutgoingMessages,
   TokenRegistry,
   XYK,
+  NoSigning,
 };
 
 export const config: ModulesConfig<
@@ -34,6 +36,7 @@ export const config: ModulesConfig<
   },
   OutgoingMessages: {},
   TokenRegistry: {},
+  NoSigning: {},
   XYK: {
     feeDivider: 1000n,
     fee: 3n, //
