@@ -5,7 +5,9 @@
 ![logo](images/logo.png)
 </div>
 
-🎮 Lorem ipsum
+🎮 Navigating the complexities of private keys and digital signatures can be daunting for average users, and errors can result in loss of funds. To address this, we propose a wallet solution built on Mina, leveraging Protokit, which eliminates the need for complex seed phrase management and simplifies digital signatures.
+
+This approach reduces the likelihood of errors and facilitates easier integration with legacy systems, ensuring a smoother transition without significant changes to infrastructure and processes.
 
 ⚙️ Built on o1js, Protokit, Rust, Typescript and React.
 
