@@ -2,7 +2,7 @@
   <h1 align="center">Black Box Private Key </h1>
   <h3>Proofable and verifiable blackboxed private keys</h3>
   
-![logo](logo.png)
+![logo](images/logo.png)
 </div>
 
 🎮 Lorem ipsum
