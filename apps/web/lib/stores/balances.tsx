@@ -16,6 +16,7 @@ export interface BalancesState {
   };
   loadBalance: (client: Client, address: string) => Promise<void>;
   faucet: (client: Client, address: string) => Promise<PendingTransaction>;
+  swapTokens: (client: Client, fromToken: string, toToken: string, amount: number, address: string) => Promise<void>;
 }
 
 function isPendingTransaction(
@@ -32,7 +33,7 @@ export const useBalancesStore = create<
   [["zustand/immer", never]]
 >(
   immer((set) => ({
-    loading: Boolean(false),
+    loading: false,
     balances: {},
     async loadBalance(client: Client, address: string) {
       set((state) => {
@@ -62,7 +63,12 @@ export const useBalancesStore = create<
       isPendingTransaction(tx.transaction);
       return tx.transaction;
     },
-  })),
+    async swapTokens(client: Client, fromToken: string, toToken: string, amount: number, address: string) {
+      // Simulate a swap operation for now
+      console.log(`Swapping ${amount} from ${fromToken} to ${toToken} for address ${address}`);
+      // Implement the swap logic here
+    },
+  }))
 );
 
 export const useObserveBalance = () => {
