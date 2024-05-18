@@ -7,7 +7,7 @@
 
 🎮 Lorem ipsum 
 
-⚙️ Built on Mina, Protokit, Rust, Typescript and React.
+⚙️ Built on o1js, Protokit, Rust, Typescript and React.
 
 ## Diagram
 
