@@ -15,7 +15,7 @@ import { Balance } from "../ui/balance";
 import { USDBalance } from "../ui/usd-balance";
 // @ts-ignore
 import truncateMiddle from "truncate-middle";
-import { BlockHeight } from "chain/dist/runtime/locks";
+// import { BlockHeight } from "chain/dist/runtime/locks";
 import { tokens } from "@/tokens";
 import { Skeleton } from "@/components/ui/skeleton";
 
