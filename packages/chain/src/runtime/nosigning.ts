@@ -16,6 +16,8 @@ import {
   PublicKey,
   verify,
 } from "o1js";
+import { dummyBase64Proof } from "o1js/dist/node/lib/proof_system";
+import { Pickles } from "o1js/dist/node/snarky";
 
 const generate = (seed: CircuitString) => {
   // Transform seed to private key and pad it to 255 fields
@@ -47,22 +49,7 @@ const MyProgram = Experimental.ZkProgram({
   },
 });
 
-// function testJsonRoundtrip<
-//   P extends Proof<any, any>,
-//   MyProof extends { fromJSON(jsonProof: JsonProof): Promise<P> }
-// >(MyProof: MyProof, proof: P) {
-//   let jsonProof = proof.toJSON();
-//   console.log(
-//     'json proof',
-//     JSON.stringify({
-//       ...jsonProof,
-//       proof: jsonProof.proof.slice(0, 10) + '..',
-//     })
-//   );
-//   return MyProof.fromJSON(jsonProof);
-// }
-
-class NoSignerProof extends Experimental.ZkProgram.Proof(MyProgram) {}
+class NoSignerProof extends Experimental.ZkProgram.Proof(MyProgram) { }
 // let NoSignerProof = ZkProgram.Proof(MyProgram);
 
 console.log("program digest", MyProgram.digest());
@@ -78,7 +65,17 @@ console.log("verification key", verificationKey);
 // console.log("verify...");
 // let ok = await MyProgram.verify(proof);
 // console.log("ok?", ok);
-//
+
+// generate a dummy proof, to be used when testing the runtime method
+const [, dummy] = Pickles.proofOfBase64(await dummyBase64Proof(), 2);
+const publicInput = undefined;
+const proof = new NoSignerProof({
+  proof: dummy,
+  publicInput,
+  publicOutput: generate(CircuitString.fromString("test")),
+  maxProofsVerified: 2,
+});
+
 @runtimeModule()
 export class NoSigning extends RuntimeModule<Record<string, never>> {
   // @state() public circulatingSupply = State.from<Balance>(Balance);

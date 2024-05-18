@@ -1,6 +1,6 @@
 import { TestingAppChain } from "@proto-kit/sdk";
 import { Character, CircuitString, PrivateKey } from "o1js";
-import { NoSigning } from "../../runtime/nosigning";
+import { NoSigning } from "../../src/runtime/nosigning";
 import { log } from "@proto-kit/common";
 import { BalancesKey, TokenId, UInt64 } from "@proto-kit/library";
 
