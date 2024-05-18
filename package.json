@@ -8,11 +8,16 @@
     "test": "turbo run test"
   },
   "devDependencies": {
+    "@storybook/nextjs": "^8.0.10",
     "eslint": "^8.53.0",
+    "flag": "^5.0.1",
     "prettier": "^3.1.0",
     "tsconfig": "workspace:*",
     "turbo": "latest"
   },
   "packageManager": "pnpm@8.6.10",
-  "name": "starter-kit"
+  "name": "starter-kit",
+  "dependencies": {
+    "@storybook/react": "^8.1.1"
+  }
 }

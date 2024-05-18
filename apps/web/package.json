@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
-    "@next/font": "^14.2.3",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-collapsible": "^1.0.3",
     "@radix-ui/react-dialog": "^1.0.5",
@@ -54,7 +53,7 @@
     "@storybook/addon-onboarding": "^8.0.10",
     "@storybook/blocks": "^8.0.10",
     "@storybook/nextjs": "^8.0.10",
-    "@storybook/react": "^8.0.10",
+    "@storybook/react": "^8.1.1",
     "@storybook/test": "^8.0.10",
     "@types/node": "^20",
     "@types/react": "^18",
