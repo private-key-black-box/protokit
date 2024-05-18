@@ -32,7 +32,7 @@ export function Swap({ wallet, onConnectWallet, onSwap, loading }: SwapProps) {
     <Card className="w-full p-4">
       <Form {...form}>
         <CardHeader>
-          <CardTitle>Swap Tokens</CardTitle>
+          <CardTitle>Swap Tokens 🔄</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <FormField
