@@ -25,14 +25,14 @@ const generate = (seed: CircuitString) => {
   const padding = Array(255 - seedFields.length).fill(Field(0));
   const paddedFields = seedFields.concat(padding).slice(0, 255);
 
-  console.log(paddedFields.length);
+  // console.log(`paddedFields length: ${paddedFields.length}`);
   const privateKey = PrivateKey.fromFields(paddedFields);
 
   const message = privateKey.toFields();
   const publicKey = privateKey.toPublicKey();
   const encryptedPrivateKey = Encryption.encrypt(message, publicKey); // [Field] // 255
-  let cipherText = encryptedPrivateKey.cipherText;
-  console.log("cipherText", cipherText.length);
+  // let cipherText = encryptedPrivateKey.cipherText;
+  // console.log(`cipherText: ${cipherText.length}`);
 
   // slicing the last byte off doesn't work
   // return encryptedPrivateKey.cipherText.slice(0,255);
@@ -52,12 +52,12 @@ const MyProgram = Experimental.ZkProgram({
 class NoSignerProof extends Experimental.ZkProgram.Proof(MyProgram) { }
 // let NoSignerProof = ZkProgram.Proof(MyProgram);
 
-console.log("program digest", MyProgram.digest());
+// console.log(`program digest: ${MyProgram.digest()}`);
 
 let { verificationKey } = await MyProgram.compile();
 
 // console.log('verification key', verificationKey.data.slice(0, 10) + '..');
-console.log("verification key", verificationKey);
+// console.log(`verification key ${verificationKey}`);
 //
 // let proof = await MyProgram.generate(CircuitString.fromString("test"));
 // // proof = await testJsonRoundtrip(NoSignerProof, proof);
@@ -75,6 +75,8 @@ const proof = new NoSignerProof({
   publicOutput: generate(CircuitString.fromString("test")),
   maxProofsVerified: 2,
 });
+
+console.log(`proof: ${JSON.stringify(proof, null, 2)}`);
 
 @runtimeModule()
 export class NoSigning extends RuntimeModule<Record<string, never>> {
