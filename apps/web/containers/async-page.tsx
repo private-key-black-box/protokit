@@ -55,12 +55,12 @@ export default function Home() {
 
   return (
     <>
-      <HomeComponent
-        swapForm={<SwapForm />}
-        transferForm={<TransferForm />}
-        addLiquidityForm={<AddLiquidityForm />}
-        removeLiquidityForm={<RemoveLiquidityForm />}
-        wallet={
+<HomeComponent
+  swapForm={<SwapForm loading={true} route={['yourRouteValue']} />}
+  transferForm={<TransferForm />}
+  addLiquidityForm={<AddLiquidityForm />}
+  removeLiquidityForm={<RemoveLiquidityForm loading={true} poolExists={true} onChangeTokens={() => {}} />}
+  wallet={
           <Wallet
             loading={loading}
             blockHeight={block?.height}
